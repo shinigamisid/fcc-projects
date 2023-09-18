@@ -1,16 +1,10 @@
-# これはサンプルの Python スクリプトです。
-
-# ⌃R を押して実行するか、ご自身のコードに置き換えてください。
-# ⇧ を2回押す を押すと、クラス/ファイル/ツールウィンドウ/アクション/設定を検索します。
-
-
-def print_hi(name):
-    # スクリプトをデバッグするには以下のコード行でブレークポイントを使用してください。
-    print(f'Hi, {name}')  # ⌘F8を押すとブレークポイントを切り替えます。
+# This entrypoint file to be used in development. Start by reading README.md
+from time_calculator import add_time
+from unittest import main
 
 
-# ガター内の緑色のボタンを押すとスクリプトを実行します。
-if __name__ == '__main__':
-    print_hi('PyCharm')
+print(add_time("11:06 PM", "2:02"))
 
-# PyCharm のヘルプは https://www.jetbrains.com/help/pycharm/ を参照してください
+
+# Run unit tests automatically
+main(module='test_module', exit=False)
