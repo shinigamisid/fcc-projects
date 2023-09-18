@@ -33,7 +33,9 @@ def time_addition(start_time, duration_to_add):
     hrs_after_add = start_time[0] + duration_to_add[0]
     min_after_add = start_time[1] + duration_to_add[1]
     time_after_add = [hrs_after_add, min_after_add, start_time[2]]
-    if time_after_add[1] > 59 and time_after_add[0] > 23:
+    if time_after_add[1] > 59 and time_after_add[0] > 34:
+        # this if statement and the while loop after are key. > 34 is chosen to account for when it's past 11:00PM and you add 24+hrs to go over 36h
+        # put this at the end to understand this: print(add_time("11:59 PM", "24:05", "Wednesday") + "\ncorrect answer: 12:04 AM, Friday (2 days later)")
         day_count += 1
         time_after_add[0] += 1
         time_after_add[1] -= 60
@@ -69,10 +71,10 @@ def ampm_convert(input_time):
 
 def day_calculator(time_conv, starting_day):
     """
-
-    :param time_conv:
-    :param starting_day:
-    :return:
+    returns the day of the week after adding the duration
+    :param time_conv: list. example [3, 45, "PM", 2]
+    :param starting_day: str. example: "Monday"
+    :return: str. day of the week
     """
     starting_day = starting_day.capitalize()
     starting_day = (days_of_week.index(starting_day) + time_conv[3]) % len(days_of_week)
@@ -119,4 +121,4 @@ def add_time(start, duration, starting_day=''):
     return new_time
 
 
-print(add_time("9:34 PM", "24:50", "Monday"))
+# print(add_time("9:34 PM", "24:50", "Monday") + "\ncorrect answer: 10:24 PM, Tuesday (next day)")
