@@ -53,9 +53,6 @@ def ampm_convert(input_time):
     :return: [3, 30, "AM", 1]
     """
     answer_time = input_time
-    if input_time[3] == 1:
-        answer_time[2] = "AM"
-        #answer_time[0] -= 12
     if input_time[1] > 59:
         answer_time[0] += 1
         answer_time[1] -= 60
@@ -120,8 +117,3 @@ def add_time(start, duration, starting_day=''):
             calculated_time[1] = f"{calculated_time[1]:0>2}"
             new_time = f"{calculated_time[0]}:{calculated_time[1]} {calculated_time[2]}, {calculated_time[4]}"
     return new_time
-
-
-print(add_time("2:59 AM", "24:00", "saturDay"))
-print(add_time("11:59 PM", "24:05"))
-print(add_time("11:59 PM", "24:05", "Wednesday"))
