@@ -35,6 +35,10 @@ def time_addition(start_time, duration_to_add):
     time_after_add = [hrs_after_add, min_after_add, start_time[2]]
     while time_after_add[0] > 23:
         day_count += 1
+        if time_after_add[1] > 59:
+            day_count += 1
+            time_after_add[0] += 1
+            time_after_add[1] -= 60
         time_after_add[0] -= 24
     if start_time[2] == "PM" and time_after_add[0] > 12:
         day_count += 1
@@ -51,14 +55,14 @@ def ampm_convert(input_time):
     answer_time = input_time
     if input_time[3] == 1:
         answer_time[2] = "AM"
-        answer_time[0] -= 12
+        #answer_time[0] -= 12
     if input_time[1] > 59:
         answer_time[0] += 1
         answer_time[1] -= 60
     if input_time[2] == "AM" and input_time[0] > 11:
         answer_time[2] = "PM"
         answer_time[0] -= 12
-    if input_time[2] == "PM" and input_time[0] > 12:
+    if input_time[2] == "PM" and input_time[0] > 11:
         answer_time[2] = "AM"
         answer_time[0] -= 12
     if answer_time[0] == 0:
@@ -119,3 +123,5 @@ def add_time(start, duration, starting_day=''):
 
 
 print(add_time("2:59 AM", "24:00", "saturDay"))
+print(add_time("11:59 PM", "24:05"))
+print(add_time("11:59 PM", "24:05", "Wednesday"))
