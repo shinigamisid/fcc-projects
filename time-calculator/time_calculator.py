@@ -33,12 +33,12 @@ def time_addition(start_time, duration_to_add):
     hrs_after_add = start_time[0] + duration_to_add[0]
     min_after_add = start_time[1] + duration_to_add[1]
     time_after_add = [hrs_after_add, min_after_add, start_time[2]]
+    if time_after_add[1] > 59 and time_after_add[0] > 23:
+        day_count += 1
+        time_after_add[0] += 1
+        time_after_add[1] -= 60
     while time_after_add[0] > 23:
         day_count += 1
-        if time_after_add[1] > 59:
-            day_count += 1
-            time_after_add[0] += 1
-            time_after_add[1] -= 60
         time_after_add[0] -= 24
     if start_time[2] == "PM" and time_after_add[0] > 12:
         day_count += 1
@@ -117,3 +117,6 @@ def add_time(start, duration, starting_day=''):
             calculated_time[1] = f"{calculated_time[1]:0>2}"
             new_time = f"{calculated_time[0]}:{calculated_time[1]} {calculated_time[2]}, {calculated_time[4]}"
     return new_time
+
+
+print(add_time("9:34 PM", "24:50", "Monday"))
